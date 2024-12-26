@@ -1,0 +1,219 @@
+// out: ../css/
+@import url(./base.less);
+// 声明基准值变量
+@baseSize:3.75vw;
+// 头部模块
+@keyframes movetabsbodydown {
+  100%{
+    transform: translateY(0%);
+  }
+}
+@keyframes movetabsbodyup {
+  0% {
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(-100%);
+  }
+}
+.suspension{
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 999;
+  width: 100%;
+  background-color: white;
+  .m-navbar{
+    position: relative;
+    background-color: #fff;
+    z-index: 999;
+    height: (44/@baseSize);
+    padding: 0 (12/@baseSize) 0 (18/@baseSize);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo{
+      img {
+          width: (66/@baseSize);
+          height: (30/@baseSize);
+        }
+    }
+    .right{
+      display: flex;
+      .search{
+        color: #ccc;
+        .ic_search_tab{
+          font-size: (22/@baseSize);
+        }
+      }
+      .face{
+        overflow: hidden;
+        width: (24/@baseSize);
+        height: (24/@baseSize);
+        border-radius: 50%;
+        margin: 0 (20/@baseSize);
+      }
+      .app-btn{
+        border: 0;
+        width: (72/@baseSize);
+        height: (24/@baseSize);
+        background-color: #ff6699;
+        color: #fff;
+        font-size: (12/@baseSize);
+      }
+    }
+  }
+  // 频道
+  .channel-menu{
+    // overflow:hidden;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: (40/@baseSize);
+    border-bottom: 1px solid #e7e7e7;
+    .tabs{
+      flex: 1;
+      overflow: hidden;
+      .tabs-list{
+        transform: translateX(0);
+        display: flex;
+        a{
+          user-select: none;
+          height: (40/@baseSize);
+          line-height: (40/@baseSize);
+          padding: 0 (16/@baseSize);
+          // 文字不换行
+          white-space: nowrap;
+          font-size: (14/@baseSize);
+        }
+        .line {
+          position: absolute;
+          left: (16/@baseSize);
+          bottom: (-1/@baseSize);
+          width: (28/@baseSize);
+          height: (2/@baseSize);
+          background-color: #fb7299;
+          transition: all .3s;
+        }
+      }
+    }
+    .after{
+      width: (39/@baseSize);
+      height: (39/@baseSize);
+      text-align: center;
+      line-height: (40/@baseSize);
+      background-color: #fff;
+      color: #ccc;
+      i{
+        font-size: (20/@baseSize);
+      }
+    }
+    // tab栏展开的内容
+    .tabsbody{
+      display: flex;
+      flex-wrap: wrap;
+      position: absolute;
+      top: -100%;
+      transform: translateY(-100%);
+      left: 0;
+      width: 100%;
+      margin-top: (44/@baseSize);
+      background-color: #fff;
+      padding: (10/@baseSize) (20/@baseSize) (20/@baseSize);
+      // animation: movetabsbodydown .5s ease-in-out forwards;
+      a{
+        color: #757575;
+        margin: (8/@baseSize);
+      }
+      .rotate-ico{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg);
+      }
+    }
+  }
+}
+// 主体部分
+.m-home{
+  padding: (85/@baseSize) (5/@baseSize) 0;
+  .video-list{
+    display: flex;
+    flex-wrap: wrap;
+    .video-item{
+      width: 50%;
+      padding: (8/@baseSize) (5/@baseSize);
+      .card{
+        position: relative;
+        height: (97/@baseSize);
+        .count{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: (28/@baseSize);
+          color: #fff;
+          padding: 0 (5/@baseSize);
+          background: linear-gradient(transparent, rgb(16 16 16 / 50%));
+          span:nth-child(1) {
+              width: 100px;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+        }
+      }
+      .title{
+        font-size:(12/@baseSize);
+        margin-top:(6/@baseSize);
+      }
+    }
+  }
+  // tab栏展开时的遮罩层
+  .maskLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+    background-color: rgba(0, 0, 0, .3);
+    display: none;
+    // opacity: 0;
+    // transition: opacity .5s ease-in-out;
+  }
+}
+@keyframes moveup {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    bottom: (30/@baseSize);
+  }
+}
+// 底部部分
+.app{
+  position: fixed;
+  opacity: 0;
+  left: 0;
+  bottom:(10/@baseSize);
+  // bottom: (30/@baseSize);
+  animation: moveup .5s ease-in-out forwards;
+  width: 100%;
+  height: (38/@baseSize);
+  .btn-app{
+    margin: 0 (20/@baseSize);
+    height: (38/@baseSize);
+    text-align: center;
+    line-height: (38/@baseSize);
+    color: #fff;
+    border-radius: 20px;
+    background-color: #fb7299;
+    box-shadow: 0 0.53333vmin 2.66667vmin rgba(0, 0, 0, .2);
+  }
+}
