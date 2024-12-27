@@ -36,17 +36,16 @@ tabsList.addEventListener('touchstart', e => {
   document.addEventListener('touchmove', tabsListTouchmove)
   document.addEventListener('touchend', () => document.removeEventListener('touchmove', tabsListTouchmove))
 })
-// tab栏内容展开逻辑
-afterIcon.addEventListener('click', e => {
-  tabsBody.style.animation = 'movetabsbodydown .2s ease-in-out forwards'
-  maskLayer.style.display = 'block'
-})
-// tab栏内容收起逻辑
-rotateIco.addEventListener('click', e => {
-  tabsBody.style.animation = 'movetabsbodyup .2s ease-in-out forwards'
-  maskLayer.style.display = 'none'
-})
-maskLayer.addEventListener('click', e => {
-  tabsBody.style.animation = 'movetabsbodyup .2s ease-in-out forwards'
-  maskLayer.style.display = 'none'
-})
+// tab栏内容展开收起逻辑
+function tabExpansionOrTakeBack(isexpansion) {
+  if (isexpansion) {
+    tabsBody.style.animation = 'movetabsbodydown .2s ease-in-out forwards'
+    maskLayer.style.display = 'block'
+  } else {
+    tabsBody.style.animation = 'movetabsbodyup .2s ease-in-out forwards'
+    maskLayer.style.display = 'none'
+  }
+}
+afterIcon.addEventListener('click', () => tabExpansionOrTakeBack(true))
+rotateIco.addEventListener('click', () => tabExpansionOrTakeBack(false))
+maskLayer.addEventListener('click', () => tabExpansionOrTakeBack(false))
