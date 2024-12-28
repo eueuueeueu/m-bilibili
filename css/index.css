@@ -51,7 +51,7 @@ ul {
 .suspension .m-navbar {
   position: relative;
   background-color: #fff;
-  z-index: 999;
+  z-index: 1000;
   height: 11.73333333vw;
   padding: 0 3.2vw 0 4.8vw;
   display: flex;
@@ -134,11 +134,11 @@ ul {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  top: -100%;
+  top: 0;
   transform: translateY(-100%);
   left: 0;
+  z-index: 999;
   width: 100%;
-  margin-top: 11.73333333vw;
   background-color: #fff;
   padding: 2.66666667vw 5.33333333vw 5.33333333vw;
 }
@@ -151,6 +151,16 @@ ul {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
+}
+.suspension .channel-menu .maskLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
 }
 .m-home {
   padding: 22.66666667vw 1.33333333vw 0;
@@ -189,16 +199,6 @@ ul {
 .m-home .video-list .video-item .title {
   font-size: 3.2vw;
   margin-top: 1.6vw;
-}
-.m-home .maskLayer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 998;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: none;
 }
 @keyframes moveup {
   0% {

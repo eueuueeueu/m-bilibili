@@ -26,7 +26,7 @@
   .m-navbar{
     position: relative;
     background-color: #fff;
-    z-index: 999;
+    z-index: 1000;
     height: (44/@baseSize);
     padding: 0 (12/@baseSize) 0 (18/@baseSize);
     display: flex;
@@ -114,11 +114,11 @@
       display: flex;
       flex-wrap: wrap;
       position: absolute;
-      top: -100%;
+      top: 0;
       transform: translateY(-100%);
       left: 0;
+      z-index: 999;
       width: 100%;
-      margin-top: (44/@baseSize);
       background-color: #fff;
       padding: (10/@baseSize) (20/@baseSize) (20/@baseSize);
       // animation: movetabsbodydown .5s ease-in-out forwards;
@@ -132,6 +132,19 @@
         left: 50%;
         transform: translateX(-50%) rotate(180deg);
       }
+    }
+    // tab栏展开时的遮罩层
+    .maskLayer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 998;
+      background-color: rgba(0, 0, 0, .3);
+      display: none;
+      // opacity: 0;
+      // transition: opacity .5s ease-in-out;
     }
   }
 }
@@ -172,19 +185,6 @@
         margin-top:(6/@baseSize);
       }
     }
-  }
-  // tab栏展开时的遮罩层
-  .maskLayer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 998;
-    background-color: rgba(0, 0, 0, .3);
-    display: none;
-    // opacity: 0;
-    // transition: opacity .5s ease-in-out;
   }
 }
 @keyframes moveup {
